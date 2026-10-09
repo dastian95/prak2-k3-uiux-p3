@@ -1,0 +1,395 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1e8562;
+    margin: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2, h3 {
+    color: #333;
+    text-align: center;
+}
+
+h3 {
+    margin-top: 0;
+}
+
+p {
+    color: #000;
+    text-align: center;
+}
+
+img {
+    display: block;
+    margin: 20px auto;
+    background-color: #808080;
+}
+
+/* Intro */
+.intro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 16px;
+    margin: 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.intro-icon {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+}
+
+.intro-text {
+    flex: 1;
+}
+
+.intro-text h3 {
+    margin: 0 0 3px;
+}
+
+.intro-text p {
+    margin: 0;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Kartu anggota */
+.members {
+    display: flex;
+    gap: 16px;
+    margin-top: 20px;
+    padding-bottom: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+}
+
+/* Kartu melebar: foto di kolom kiri, teks di kolom kanan */
+.card {
+    display: grid;
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    grid-template-columns: 200px 1fr;
+    column-gap: 24px;
+    grid-template-rows: repeat(4, auto) 1fr;
+    align-items: start;
+    box-sizing: border-box;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 16px;
+    background-color: #f9f9f9;
+    text-align: left;
+}
+
+.card > :not(img) {
+    grid-column: 2;
+}
+
+.card img {
+    grid-column: 1;
+    grid-row: 1 / span 5;
+    width: 200px;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 0;
+}
+
+.card h3 {
+    margin: 0 0 8px;
+    text-align: left;
+}
+
+.role {
+    justify-self: start;
+    padding: 3px 12px;
+    margin-bottom: 12px;
+    border-radius: 999px;
+    background-color: #e3edfc;
+    color: #0b57d0;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.card ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    list-style: none;
+    margin: 0 0 12px;
+    padding: 8px 0 0;
+}
+
+.card li {
+    padding: 5px 0;
+    white-space: nowrap;
+}
+
+.motto {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.motto-icon {
+    flex-shrink: 0;
+    font-size: 20px;
+}
+
+.motto p {
+    margin: 0;
+    text-align: left;
+    font-size: 14px;
+    font-style: italic;
+    color: #555;
+}
+
+/* Layar sempit: foto di atas, teks di bawah */
+@media (max-width: 600px) {
+    .card {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .card > :not(img) {
+        grid-column: 1;
+    }
+
+    .card img {
+        grid-row: auto;
+        margin: 0 auto 12px;
+    }
+
+    .card h3 {
+        text-align: center;
+    }
+
+    .role {
+        justify-self: center;
+    }
+
+    .card ul {
+        justify-content: center;
+    }
+
+    .motto {
+        justify-content: center;
+    }
+}
+
+/* Footer */
+/* Topbar */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+    padding: 12px 24px;
+    background-color: #455774;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 20px;
+    color: #fff;
+    text-align: left;
+}
+
+header p {
+    margin: 0;
+    font-size: 14px;
+    color: #d6deea;
+    text-align: right;
+}
+
+footer {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #455774;
+}
+
+footer p {
+    margin: 4px 0;
+    color: #fff;
+    font-size: 14px;
+}
+
+/* Layar besar: seluruh halaman muat dalam satu layar tanpa scroll */
+@media (min-width: 900px) and (min-height: 760px) {
+    body {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+    }
+
+    header {
+        flex: none;
+        padding: 8px 24px;
+    }
+
+    main.container {
+        flex: 1;
+        min-height: 0;
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 1240px;
+        padding: 10px 20px;
+        display: grid;
+        grid-template-columns: auto auto 1fr;
+        grid-template-rows: auto auto 1fr;
+        column-gap: 20px;
+        align-items: center;
+    }
+
+    main > img {
+        grid-column: 1;
+        grid-row: 1 / span 2;
+        width: 90px;
+        height: auto;
+        margin: 0;
+    }
+
+    main > h1 {
+        grid-column: 2;
+        grid-row: 1;
+        margin: 0;
+        text-align: left;
+        font-size: 24px;
+    }
+
+    main > h3 {
+        grid-column: 2;
+        grid-row: 2;
+        margin: 0;
+        text-align: left;
+    }
+
+    .intro {
+        grid-column: 3;
+        grid-row: 1 / span 2;
+        margin: 0;
+        padding: 8px 14px;
+    }
+
+    .intro-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+    }
+
+    .intro-text h3 {
+        font-size: 14px;
+    }
+
+    .intro-text p {
+        font-size: 13px;
+        line-height: 1.3;
+    }
+
+    .members {
+        grid-column: 1 / -1;
+        grid-row: 3;
+        align-self: stretch;
+        min-height: 0;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 10px;
+        padding-bottom: 0;
+        overflow: visible;
+        scroll-snap-type: none;
+    }
+
+    .card {
+        position: relative;
+        flex: 1 1 0;
+        min-height: 0;
+        grid-template-columns: max-content 1fr;
+        grid-template-rows: none;
+        align-content: center;
+        column-gap: 12px;
+        padding: 6px 12px 6px 124px;
+    }
+
+    .card img {
+        position: absolute;
+        grid-column: auto;
+        grid-row: auto;
+        left: 12px;
+        top: 6px;
+        width: 100px;
+        height: calc(100% - 12px);
+    }
+
+    .card h3 {
+        grid-column: 1;
+        grid-row: 1;
+        margin: 0;
+    }
+
+    .card .role {
+        grid-column: 2;
+        grid-row: 1;
+        margin: 0;
+    }
+
+    .card ul {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        margin: 0;
+        padding: 2px 0;
+    }
+
+    .card li {
+        padding: 2px 0;
+    }
+
+    .card .motto {
+        grid-column: 1 / -1;
+        grid-row: 3;
+        padding: 4px 10px;
+    }
+
+    footer {
+        flex: none;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 0;
+        padding: 8px;
+    }
+
+    footer p {
+        margin: 0;
+    }
+}
